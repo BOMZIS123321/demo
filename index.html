@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Demo Lapa</title>
+    <title>Demo Lapa - Čatbota Demonstrācija</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
     
     <style>
         /* Noņemam liekās malas */
@@ -20,6 +20,7 @@
             height: 100%;
             font-family: 'Inter', sans-serif;
             overflow: hidden; /* Neļauj parādīties ritjoslām */
+            color: white;
         }
 
         /* IDEĀLI NOCENTRĒTS VIDEO FONS */
@@ -43,29 +44,110 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.65);
+            background: rgba(0, 0, 0, 0.7); 
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px); 
             z-index: -1;
         }
 
-        /* Saturs precīzi ekrāna vidū */
-        .content {
+        /* Galvenais lapas izkārtojums */
+        .container {
             height: 100%;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
-            text-align: center;
+            padding: 20px;
+            position: relative;
         }
 
-        /* MAZĀKI, MODERNĀKI BURTI */
+        /* Saturs centrā */
+        .main-content {
+            text-align: center;
+            max-width: 650px;
+            margin-bottom: 40px;
+        }
+
         h1 {
-            color: white;
             font-size: 2.5rem;
             font-weight: 500;
             letter-spacing: 6px;
             text-transform: uppercase;
             text-shadow: 0px 4px 12px rgba(0, 0, 0, 0.3);
+            margin-bottom: 15px;
+        }
+
+        .instruction {
+            font-size: 1.1rem;
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.8);
+            letter-spacing: 1px;
+            line-height: 1.6;
+        }
+
+        /* INFO BLOKS MALA */
+        .business-benefits {
+            position: absolute;
+            bottom: 40px;
+            left: 40px;
+            background: rgba(255, 255, 255, 0.06);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 16px;
+            width: 380px; /* Fiksēts platums, lai teksts nelēkā */
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+        }
+
+        .business-benefits h2 {
+            font-size: 1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 20px;
+            color: #4ade80; 
+            text-align: left;
+            line-height: 1.4;
+        }
+
+        .business-benefits ul {
+            list-style: none;
+            text-align: left;
+        }
+
+        .business-benefits li {
+            font-size: 0.9rem;
+            font-weight: 300;
+            margin-bottom: 14px;
+            line-height: 1.5;
+            color: rgba(255, 255, 255, 0.9);
+            display: block; /* Nomainīts uz block, lai teksts plūst dabiski */
+            position: relative;
+            padding-left: 20px; /* Atstājam vietu punktam */
+        }
+
+        /* Glīts un stabils punkts sarakstam */
+        .business-benefits li::before {
+            content: "•";
+            color: #4ade80;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        .business-benefits strong {
+            font-weight: 600;
+            color: white;
+            display: inline; /* Nodrošina, ka teksts seko uzreiz aiz treknraksta */
+        }
+
+        /* Pielāgojumi mobilajām ierīcēm */
+        @media (max-width: 768px) {
+            body, html { overflow: auto; }
+            .container { height: auto; padding: 60px 20px; }
+            .business-benefits { position: static; margin-top: 40px; width: 100%; max-width: 380px; }
         }
     </style>
 </head>
@@ -78,10 +160,31 @@
 
     <div class="overlay"></div>
 
-    <div class="content">
-        <h1>Demo lapa</h1>
+    <div class="container">
+        
+        <!-- Centrālais aicinājums izmēģināt čatbotu -->
+        <div class="main-content">
+            <h1>Demo lapa</h1>
+            <p class="instruction">Izmēģini viedo asistentu darbībā! Klikšķini uz čata ikonas ekrāna labajā apakšējā stūrī.</p>
+            <div style="text-align: right; margin-top: 20px; padding-right: 30px;">
+                <span style="display: inline-block; font-size: 2rem; transform: scaleX(-1); color: rgba(255,255,255,0.5);">层</span>
+            </div>
+        </div>
+
+        <!-- Biznesa ieguvumu kartiņa kreisajā malā -->
+        <div class="business-benefits">
+            <h2>Kāpēc biznesam vajadzīgs čatbots?</h2>
+            <ul>
+                <li><strong>24/7 Atbalsts:</strong> Atbild uz klientu jautājumiem uzreiz, pat vēlu naktī.</li>
+                <li><strong>Automātiska Lead'u ievākšana:</strong> Reģistrē potenciālos klientus un nodod datus CRM (pateicoties Zapier).</li>
+                <li><strong>Laika taupīšana:</strong> Atbrīvo komandu no vienveidīgiem, atkārtotiem jautājumiem.</li>
+                <li><strong>Efektivitāte:</strong> Spēj apkalpot simtiem klientu vienlaicīgi bez aizkaves.</li>
+            </ul>
+        </div>
+
     </div>
 
+    <!-- Zapier Čatbota integrācija -->
     <script async type='module' src='https://interfaces.zapier.com/assets/web-components/zapier-interfaces/zapier-interfaces.esm.js'></script>
     <zapier-interfaces-chatbot-embed is-popup='true' chatbot-id='cmqr11vd20014c68bihz45ofs'></zapier-interfaces-chatbot-embed>
 
